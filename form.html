@@ -9,46 +9,69 @@
 </head>
 <body>
 
-<h2>HTML Forms</h2>
+  <h2>HTML Forms</h2>
 
-<form action="/action_page.php">
-  First name:<br>
-  <input type="text" name="firstname" value="">
-  <br>
-  Last name:<br>
-  <input type="text" name="lastname" value="">
-  <br><br>
-  
-  Age:<br>
-  <select>
-  	<option value="">10-20</option>
-  	<option value="">20-30</option>
-  	<option value="">30-40</option>
-  	<option value="">40+</option>
-  </select>
-  <br><br>
-  
-  Job:<br>
-  <select>
-    <option value="">Banking</option>
-  	<option value="">Software Engineer</option>
-  	<option value="">Commerce</option>
-  </select>
-  <br><br>
-  
-  About me:<br>
-  <textarea rows="12" cols="50"></textarea><br><br>
-  
-  <input type="submit" value="Submit">
-</form> 
+  <form action="/action_page.php">
+    First name:<br>
+    <input type="text" name="firstname" value="">
+    <br>
+    Last name:<br>
+    <input type="text" name="lastname" value="">
+    <br><br>
 
-<p>If you click the "Submit" button, you agree with the following metrics getting saved.</p>
-<ul>
-<li>Keystroke speed</li>
-<li>Mouse speed</li>
-<li>All saved data</li>
-</ul>
+    Age:<br>
+    <select>
+      <option value="">10-20</option>
+      <option value="">20-30</option>
+      <option value="">30-40</option>
+      <option value="">40+</option>
+    </select>
+    <br><br>
 
+    Job:<br>
+    <select>
+      <option value="">Banking</option>
+      <option value="">Software Engineer</option>
+      <option value="">Commerce</option>
+    </select>
+    <br><br>
+
+    About me:<br>
+    <textarea id="description" rows="12" cols="50"></textarea><br><br>
+
+    <input type="submit" value="Submit">
+  </form>
+
+  <p>If you click the "Submit" button, you agree with the following metrics getting saved.</p>
+  <ul>
+    <li>Keystroke speed</li>
+    <li>Mouse speed</li>
+    <li>All saved data</li>
+  </ul>
+
+  <script>
+    var times = [];
+
+    var dataSet = [];
+
+    document.getElementById("description").onkeypress = function() {myFunction()};
+
+    function myFunction() {
+      var currentTime = new Date().getTime();
+
+      times.push(currentTime);
+
+      if(times.length > 1) {
+        const time = currentTime - times[0];
+
+        console.log(time);
+
+        dataSet.push(time);
+
+        times = [];
+      }
+    }
+  </script>
 </body>
 </html>
 
